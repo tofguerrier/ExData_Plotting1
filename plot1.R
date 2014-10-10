@@ -36,7 +36,7 @@ colnames(data) <- colnames(read.csv("./data/household_power_consumption.txt",sep
 #grep('\\?', data[,names(data)[2:9]])
 # return integer(0) => not present in interval of interest.
 
-png(filename = "./figure/plot1.png", width = 480, height = 480, units = "px")
+png(filename = "./plot1.png", width = 480, height = 480, units = "px")
 hist(data$Global_active_power, 
      breaks = 12, col = "red", 
      xlab = "Global Active Power (kilowatts)",

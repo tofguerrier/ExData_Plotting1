@@ -40,7 +40,7 @@ data$FullDate <- strptime(paste(data$Date, data$Time), "%d/%m/%Y %H:%M:%S")
 
 
 
-png(filename = "./figure/plot3.png", width = 480, height = 480, units = "px")
+png(filename = "./plot3.png", width = 480, height = 480, units = "px")
 plot(y = data$Sub_metering_1, x = data$FullDate,
      type = 'l', xlab ="", ylab = "Energy sub metering")
 lines(y = data$Sub_metering_2, x = data$FullDate, col = "red")

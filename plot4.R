@@ -39,7 +39,7 @@ data$FullDate <- strptime(paste(data$Date, data$Time), "%d/%m/%Y %H:%M:%S")
 # return integer(0) => not present in interval of interest.
 
 
-png(filename = "./figure/plot4.png", width = 480, height = 480, units = "px")
+png(filename = "./plot4.png", width = 480, height = 480, units = "px")
 par(mfrow=c(2,2))
 plot(y = data$Global_active_power, x = data$FullDate,
      type = 'l', xlab ="", ylab = "Global Active Power (kilowatts)")

@@ -7,6 +7,9 @@ urldata = "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power
 if (!file.exists("data")) {
   dir.create("data")
 }
+if (!file.exists("figure")) {
+  dir.create("figure")
+}
 
 def <- "./data/household_power_consumption.zip"
 download.file(urldata,destfile = def ,method = "curl")
@@ -26,8 +29,8 @@ colnames(data) <- colnames(read.csv("./data/household_power_consumption.txt",sep
                            header = TRUE, nrows =2))
 
 #Convert Time and Date Posix
-data$Date <- as.Date(data$Date, "%d/%m/%y")
-data$Time <- strptime(data$Time, format = "%T")
+#data$Date <- as.Date(data$Date, "%d/%m/%y")
+#data$Time <- strptime(data$Time, format = "%T")
 
 data$FullDate <- strptime(paste(data$Date, data$Time), "%d/%m/%Y %H:%M:%S")
 
@@ -37,7 +40,7 @@ data$FullDate <- strptime(paste(data$Date, data$Time), "%d/%m/%Y %H:%M:%S")
 
 
 
-png(filename = "plot3.png", width = 480, height = 480, units = "px")
+png(filename = "./figure/plot3.png", width = 480, height = 480, units = "px")
 plot(y = data$Sub_metering_1, x = data$FullDate,
      type = 'l', xlab ="", ylab = "Energy sub metering")
 lines(y = data$Sub_metering_2, x = data$FullDate, col = "red")

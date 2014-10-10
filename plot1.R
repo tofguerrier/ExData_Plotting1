@@ -7,6 +7,9 @@ urldata = "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power
 if (!file.exists("data")) {
   dir.create("data")
 }
+if (!file.exists("figure")) {
+  dir.create("figure")
+}
 
 def <- "./data/household_power_consumption.zip"
 download.file(urldata,destfile = def ,method = "curl")
@@ -26,14 +29,14 @@ colnames(data) <- colnames(read.csv("./data/household_power_consumption.txt",sep
                            header = TRUE, nrows =2))
 
 #Convert Time and Date Posix
-data$Date <- as.Date(data$Date, "%d/%m/%y")
-data$Time <- strptime(data$Time, format = "%T")
+#data$Date <- as.Date(data$Date, "%d/%m/%y")
+#data$Time <- strptime(data$Time, format = "%T")
 
 #Convert "?" into true NA
 #grep('\\?', data[,names(data)[2:9]])
 # return integer(0) => not present in interval of interest.
 
-png(filename = "plot1.png", width = 480, height = 480, units = "px")
+png(filename = "./figure/plot1.png", width = 480, height = 480, units = "px")
 hist(data$Global_active_power, 
      breaks = 12, col = "red", 
      xlab = "Global Active Power (kilowatts)",
